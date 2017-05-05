@@ -1,0 +1,336 @@
+*{
+  box-sizing: border-box;
+}
+
+html, body{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: white;
+
+  font-family: 'Source Sans Pro', sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+#info{
+  position: absolute;
+  z-index: 32767;
+  top: 0;
+  left: 0;
+}
+
+#init-loaders{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3000;
+  transition: opacity 0.3s, visibility 0.3s;
+  opacity: 1;
+  visibility: visible;
+}
+
+#init-loaders > div{
+  position: absolute;
+  width: 100vw;
+}
+
+#init-loaders-0{
+  bottom: 75vh;
+}
+
+#init-loaders-1{
+  bottom: 50vh;
+}
+
+#init-loaders-2{
+  bottom: 25vh;
+}
+
+#init-loaders-3{
+  bottom: 0
+}
+
+.state-started #init-loaders{
+  opacity: 0;
+  visibility: hidden;
+}
+
+#event-sink{
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.state-loaded #go, .state-loaded #go-hint,
+.state-ready #go, .state-ready #go-hint{
+  opacity: 1;
+  visibility: visible;
+}
+
+#go{
+  position: absolute;
+  display: block;
+  width: 100vw;
+  z-index: 4000;
+  top: calc(50vh - 50px); /* ad-hoc */
+  left: 0;
+  text-align: center;
+
+  font-weight: 200;
+  font-size: 64px;
+  color: white;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+#go:active{
+  opacity: 0.6;
+}
+
+.state-loaded #go::after{
+  content: '. . .';
+}
+
+@keyframes breathe {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.state-loaded #go{
+  animation: 1s ease-in-out infinite alternate breathe;
+}
+
+.state-ready #go::after{
+  content: 'start';
+}
+
+#go-hint{
+  position: absolute;
+  display: block;
+  width: 100vw;
+  z-index: 4000;
+  top: calc(50vh + 16px); /* ad-hoc */
+  left: 0;
+  text-align: center;
+
+  font-weight: 200;
+  font-size: 16px;
+  color: #cccccc;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.state-loaded #go-hint::after{
+  content: '(decoding audio)';
+}
+
+.state-no-fullscreen #go-hint{
+  display: none;
+}
+
+.state-ready #go-hint::after{
+  content: '(fullscreen)';
+}
+
+.ready-tip{
+  font-weight: 300;
+  color: #959595;
+  font-size: 28px;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s;
+  position: absolute;
+  width: 100vw;
+  text-align: center;
+}
+
+#ready-tip-1{
+  bottom: 20vh;
+}
+
+#ready-tip-1-2{
+  font-size: 20px;
+  color: #a0a0a0;
+}
+
+#ready-tip-2{
+  bottom: calc(20vh + 12px);
+}
+
+.state-started #ready-tip-1{
+  opacity: 1;
+  visibility: visible;
+}
+
+.state-playing #ready-tip-1{
+  opacity: 0;
+  visibility: hidden;
+}
+
+.state-playing #ready-tip-2{
+  opacity: 1;
+  visibility: visible;
+}
+
+.state-no-tip .ready-tip{
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.hinter{
+  z-index: 100;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.state-playing .hinter{
+  opacity: 1;
+  visibility: visible;
+}
+
+
+#hinter{
+  width: 96px;
+  height: 96px;
+  border-radius: 48px;
+  background-color: #e8e8e8;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+
+.sub-hinter{
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border-width: 1px;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+#about-toggle{
+  position: absolute;
+  z-index: 2000;
+  bottom: 20px;
+  right: 20px;
+  font-size: 16px;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 0.5px solid #aaa;
+  color: #aaa;
+  transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  font-weight: 300;
+  text-align: center;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+/*
+ * expand hit area. if width / height is not specified (kept at auto)
+ * then they'll be adjusted according to l/r & t/b, achieving the desired effect.
+ */
+#about-toggle::before{
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+}
+
+#about-toggle:active{
+  color: #888;
+  border-color: #888;
+}
+
+.state-started #about-toggle{
+  opacity: 1;
+  visibility: visible;
+}
+
+.state-started #about-toggle::after{
+  content: '?';
+  position: relative;
+  top: 3px;
+}
+
+.state-about-shown #about-toggle{
+  border: 0.5px solid #888;
+  color: #888;
+}
+
+.state-about-shown #about-toggle::after{
+  content: '×';
+  font-size: 20px;
+  position: relative;
+  top: 1.5px;
+}
+
+.state-about-shown #about-toggle:active{
+  border: 0.5px solid #666;
+  color: #666;
+}
+
+#about{
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.3;
+  background-color: #dbdbdb;
+  color: #666;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.state-about-shown #about{
+  opacity: 1;
+  visibility: visible;
+}
+
+
+#about p{
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+#about strong{
+  font-weight: 600;
+}
+
+#about a{
+  text-decoration: underline;
+  color: #555;
+  transition: color 0.3s ease-in-out;
+}
+
+#about a.no-underline{
+  text-decoration: none;
+}
+
+#about a:active{
+  color: black;
+}

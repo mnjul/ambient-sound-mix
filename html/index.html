@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TouchSoundMix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600" rel="stylesheet">
+    <link rel="stylesheet" href="dep/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/main.js"></script>
+  </head>
+  <body>
+    <div id="event-sink">
+      <div id="init-loaders">
+        <div id="init-loaders-0"></div>
+        <div id="init-loaders-1"></div>
+        <div id="init-loaders-2"></div>
+        <div id="init-loaders-3"></div>
+      </div>
+
+      <span id="go"></span>
+      <span id="go-hint"></span>
+
+      <!--<div id="info">
+      </div>-->
+
+      <div id="ready-tip-1" class="ready-tip">
+        <div id="ready-tip-1-1">touch anywhere</div>
+        <div id="ready-tip-1-2">(will sound)</div>
+      </div>
+
+      <div id="ready-tip-2" class="ready-tip">
+        <div id="ready-tip-1-1">hold and move around</div>
+      </div>
+
+      <div id="hinter" class="hinter"></div>
+      <div id="sub-hinter-0" class="hinter sub-hinter"></div>
+      <div id="sub-hinter-1" class="hinter sub-hinter"></div>
+      <div id="sub-hinter-2" class="hinter sub-hinter"></div>
+      <div id="sub-hinter-3" class="hinter sub-hinter"></div>
+
+      <div id="about">
+        <p>
+        This audio project enables experimenting mixing different kinds of sounds (natural, urban, people, ...etc.) which we don't usually encounter at the same time, within the same environment. How do we feel if we hear emergency room sounds with ocean wave sounds at the same time? Café and ambulance? thunderstorms and cicadas? What about all of them?
+        </p>
+
+        <p>
+        <strong>Sound Sources</strong><br />
+        This project uses sounds from:
+        </p>
+
+        <p>
+        Having issues? Looking for source code? Check out <a href="//github.com/mnjul/ambient-sound-mix" target="_blank">this project at GitHub</a>.
+        </p>
+
+        <p>
+        ambient-sound-mix &copy; 2017 by <a class="no-underline" href="//mnjul.net/">Mnjul/purincess (Min-Zhong Lu)</a>
+        </p>
+      </div>
+
+      <div id="about-toggle"></div>
+    </div>
+    <div id="es6-blocker" style="position: absolute; z-index: 65535; display:none; width: 100%; height: 100%; background-color: white; color: black; padding: 10%; font-size: 20px">This webpage requires a browser with native compatibility with ECMAScript 2015.</div>
+    <script>
+      var es6Timeout = setTimeout(function(){
+        document.getElementById('es6-blocker').style.display = 'block';
+      }, 1);
+    </script>
+    <script>
+      (() => {
+        clearTimeout(es6Timeout);
+        document.body.removeChild(document.getElementById('es6-blocker'));
+        Array.from(document.body.querySelectorAll('script')).forEach(elm => document.body.removeChild(elm));
+      })();
+    </script>
+  </body>
+</html>
