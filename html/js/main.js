@@ -44,16 +44,16 @@ const C = {
     {h: 254, s: 85, l: 59, r: 0x67, g: 0x3e, b: 0xf0}
   ],
 
-  startBG_L: 18,
+  startBG_L: 0,
 
   fadeStep: 0.05,
   fadeInterval: 20, // ms
 
   hideTipAfter: 1500, // ms
 
-  hinterRadius: 48, // XXX: should be calculated from computed style
+  hinterRadius: 40, // XXX: should be calculated from computed style
   subHinterRadius: 10,
-  hinterSubHinterDistance: 64, // between centers
+  hinterSubHinterDistance: 72, // between centers
 
   maxVolMaxDistRatio: 0.1,
   minVolDistRatio: 0.9,

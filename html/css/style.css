@@ -16,6 +16,10 @@ html, body{
   text-rendering: optimizeLegibility;
 }
 
+.state-loaded, .state-ready, .state-started{
+  background-color: black;
+}
+
 #info{
   position: absolute;
   z-index: 32767;
@@ -85,7 +89,7 @@ html, body{
 
   font-weight: 200;
   font-size: 64px;
-  color: white;
+  color: #ccc;
 
   opacity: 0;
   visibility: hidden;
@@ -129,7 +133,7 @@ html, body{
 
   font-weight: 200;
   font-size: 16px;
-  color: #cccccc;
+  color: #888;
 
   opacity: 0;
   visibility: hidden;
@@ -151,7 +155,7 @@ html, body{
 
 .ready-tip{
   font-weight: 300;
-  color: #959595;
+  color: #aaa;
   font-size: 28px;
   z-index: 200;
   opacity: 0;
@@ -168,7 +172,7 @@ html, body{
 
 #ready-tip-1-2{
   font-size: 20px;
-  color: #a0a0a0;
+  color: #888;
 }
 
 #ready-tip-2{
@@ -209,10 +213,10 @@ html, body{
 
 
 #hinter{
-  width: 96px;
-  height: 96px;
-  border-radius: 48px;
-  background-color: #e8e8e8;
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  border: 1px solid #333;
   transition: opacity 0.2s ease-in-out, visibility 0.2s;
 }
 
@@ -234,8 +238,8 @@ html, body{
   width: 24px;
   height: 24px;
   border-radius: 12px;
-  border: 0.5px solid #aaa;
-  color: #aaa;
+  border: 0.5px solid #666;
+  color: #666;
   transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
   font-weight: 300;
   text-align: center;
@@ -258,8 +262,8 @@ html, body{
 }
 
 #about-toggle:active{
-  color: #888;
-  border-color: #888;
+  color: #777;
+  border-color: #777;
 }
 
 .state-started #about-toggle{
@@ -274,8 +278,8 @@ html, body{
 }
 
 .state-about-shown #about-toggle{
-  border: 0.5px solid #888;
-  color: #888;
+  border: 0.5px solid #777;
+  color: #777;
 }
 
 .state-about-shown #about-toggle::after{
